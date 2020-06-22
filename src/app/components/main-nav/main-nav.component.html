@@ -1,0 +1,93 @@
+<body class="body">
+    <div (clickOutside)="drawer.close()">
+        <mat-toolbar color="primary" class="mat-elevation-z8 .mat-toolbar-single-row">
+            <span>
+                <div class="boton-menu">
+                    <button type="button" mat-button (click)="drawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+            </span>
+
+            <span class="titulo-principal">
+                LIGA DE FUTBOL
+            </span>
+
+            <span class="espacioncentral"></span>
+
+            <button mat-button (click)="toHome()">
+                <mat-icon>home</mat-icon>
+            </button>
+
+            <button mat-button (click)="logOut()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-drawer-container color="primary" class="ventana">
+
+            <mat-drawer #drawer class=".mat-drawer" fixedInViewport="true"
+                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                [mode]="(isHandset$ | async) ? 'over' : 'side'">
+
+                <mat-expansion-panel>
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="titulo" >
+                            ARCHIVO
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <p></p>
+
+                    <a mat-label  class="boton2" (click)="drawer.toggle()"
+                        fxLayout="row" (click)="irALocatarios()">
+                        <div class="icono">
+                            <mat-icon>tour
+                            </mat-icon> &nbsp;
+                        </div>
+                        <div>
+                            Equipos
+                        </div>
+                    </a>
+
+                    <p></p>
+
+                    <a mat-label  class="boton2" (click)="drawer.toggle()"
+                        fxLayout="row" (click)="irALocadores()">
+                        <div class="icono">
+                            <mat-icon>account_circle
+                            </mat-icon> &nbsp;
+                        </div>
+                        <div>
+                            Jugadores sancionados
+                        </div>
+                    </a>
+
+                    <p></p>
+
+                    <a mat-label  class="boton2" (click)="drawer.toggle()"
+                        fxLayout="row" (click)="irAInmuebles()">
+                        <div class="icono">
+                            <mat-icon>verified_user
+                            </mat-icon> &nbsp;
+                        </div>
+                        <div>
+                            Comprobar sancionados
+                        </div>
+                    </a>
+
+                    <p></p>
+
+                </mat-expansion-panel>
+
+            </mat-drawer>
+
+
+        </mat-drawer-container>
+
+    </div>
+
+
+    <router-outlet></router-outlet>
+</body>

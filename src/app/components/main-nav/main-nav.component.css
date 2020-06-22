@@ -1,0 +1,94 @@
+.titulo-principal{
+    font-family: 'Roboto', sans-serif;
+}
+
+.body {
+    overflow-y: scroll;
+}
+
+.boton-menu{
+    margin-left: -10%;
+}
+
+.mat-toolbar-single-row{
+    position: fixed;
+    z-index: 10;
+}
+
+.icono{
+    margin-top: -4px;
+}
+
+.espacioncentral {
+    flex: 1 1 auto;
+}
+
+.mat-drawer{
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.287);
+    position: fixed;
+    top: 64px;
+}
+
+.formatos{
+    text-align: center;
+}
+
+.letras{
+    font-size: 12px;
+}
+
+.theme-selectors-container {
+    width: 190px;
+    margin: 0 8px;
+  }
+  
+  .subti {
+      margin-left: 5%;
+  }
+
+  .paletaColores {
+    margin-left: 10px;
+  }
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+@media screen and (max-width: 599px) {
+    .mat-drawer{
+        box-shadow: 3px 0 6px rgba(255, 255, 255, 0.19);
+        position: fixed;
+        top: 56px;
+    }
+}
+
+.desplegable{
+    max-height: 400px;
+}
+
+.titulo{
+    font-weight: 800;
+    font-family: 'Open Sans';
+    font-size: 15px;
+  }
+
+.boton2{
+    text-align: start;
+    width: 100%;
+    cursor: pointer;
+}
+
+.boton3{
+  text-align: start;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.ventana {
+    z-index: 10;
+}

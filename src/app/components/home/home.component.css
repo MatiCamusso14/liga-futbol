@@ -1,0 +1,218 @@
+.carta{
+    margin-left: 36%;
+    margin-right: 20%;
+    margin-top: -15%;
+    text-align: center;
+}
+
+.tituloCabecera{
+  margin-top: 15px;
+}
+
+.number{
+    color: white;
+}
+
+.number2{
+  color: black;
+}
+
+.texto{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    color: white;
+}
+
+.contenido{
+    padding-top: 7%;
+    margin-left: 2%;
+  }
+
+.iconos {
+    height: 80px;
+    display: flex;
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+/* Infobox ===================================== */
+.info-box2 {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.541);
+    height: 80px;
+    display: flex;
+    cursor: pointer;
+    background-color: rgb(207, 207, 207);
+    width: 285px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px; }
+    .info-box2 .icon2 {
+      display: inline-block;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.12);
+      width: 80px; }
+      .info-box2 .icon2 i {
+        color: rgb(0, 0, 0);
+        font-size: 50px;
+        line-height: 80px; }
+      .info-box2 .icon2 .chart.chart-bar2 {
+        height: 100%;
+        line-height: 100px; }
+        .info-box2 .icon2 .chart.chart-bar2 canvas {
+          vertical-align: baseline !important; }
+      .info-box2 .icon2 .chart.chart-pie2 {
+        height: 100%;
+        line-height: 123px; }
+        .info-box2 .icon2 .chart.chart-pie2 canvas {
+          vertical-align: baseline !important; }
+      .info-box2 .icon2 .chart.chart-line {
+        height: 100%;
+        line-height: 115px; }
+        .info-box2 .icon2 .chart.chart-line2 canvas {
+          vertical-align: baseline !important; }
+    .info-box2 .content2 {
+      display: inline-block;
+      padding: 7px 10px; }
+      .info-box2 .content2 .text2 {
+        font-size: 13px;
+        margin-top: 6px;
+        color: rgb(80, 80, 80); }
+      .info-box2 .content2 .number2 {
+        font-weight: normal;
+        font-size: 26px;
+        margin-top: 1px;
+        color: rgb(0, 0, 0); }
+
+        .bg-light-blue2 {
+            color: rgb(255, 0, 0);
+        }
+
+        .info-box2.hover-expand-effect2:after {
+            background-color: rgba(0, 0, 0, 0.192);
+            content: ".";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 100%;
+            color: transparent;
+            -moz-transition: all 0.95s;
+            -o-transition: all 0.95s;
+            -webkit-transition: all 0.95s;
+            transition: all 0.95s;
+        }
+
+        .info-box2.hover-expand-effect2:hover:after {
+            width: 100%;
+        }
+
+        .card2 {
+            background: rgb(206, 206, 206);
+            min-height: 50px;
+            margin-right: 1.5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.507);
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 2px;
+        }
+
+
+        .card2 .header2 {
+            color: rgb(223, 223, 223);
+            padding: 5px;
+            height: 115px;
+            margin-left: 12px;
+            position: relative;
+            border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+        }
+
+        .info-box {
+          box-shadow: 0 2px 10px rgba(255, 255, 255, 0.219);
+          height: 80px;
+          display: flex;
+          cursor: pointer;
+          background-color: rgb(66, 66, 66);
+          width: 285px;
+          position: relative;
+          overflow: hidden;
+          margin-bottom: 30px; }
+          .info-box .icon {
+            display: inline-block;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.12);
+            width: 80px; }
+            .info-box .icon i {
+              color: #fff;
+              font-size: 50px;
+              line-height: 80px; }
+            .info-box .icon .chart.chart-bar {
+              height: 100%;
+              line-height: 100px; }
+              .info-box .icon .chart.chart-bar canvas {
+                vertical-align: baseline !important; }
+            .info-box .icon .chart.chart-pie {
+              height: 100%;
+              line-height: 123px; }
+              .info-box .icon .chart.chart-pie canvas {
+                vertical-align: baseline !important; }
+            .info-box .icon .chart.chart-line {
+              height: 100%;
+              line-height: 115px; }
+              .info-box .icon .chart.chart-line canvas {
+                vertical-align: baseline !important; }
+          .info-box .content {
+            display: inline-block;
+            padding: 7px 10px; }
+            .info-box .content .text {
+              font-size: 13px;
+              margin-top: 6px;
+              color: rgb(150, 150, 150); }
+            .info-box .content .number {
+              font-weight: normal;
+              font-size: 26px;
+              margin-top: 1px;
+              color: rgb(255, 255, 255); }
+      
+              .bg-light-blue {
+                  color: #fff;
+              }
+      
+              .info-box.hover-expand-effect:after {
+                  background-color: rgba(255, 255, 255, 0.192);
+                  content: ".";
+                  position: absolute;
+                  top: 0;
+                  width: 0;
+                  height: 100%;
+                  color: transparent;
+                  -moz-transition: all 0.95s;
+                  -o-transition: all 0.95s;
+                  -webkit-transition: all 0.95s;
+                  transition: all 0.95s;
+              }
+      
+              .info-box.hover-expand-effect:hover:after {
+                  width: 100%;
+              }
+      
+              .card {
+                  background: rgb(66, 66, 66);
+                  min-height: 50px;
+                  margin-right: 1.5%;
+                  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+                  position: relative;
+                  margin-bottom: 30px;
+                  border-radius: 2px;
+              }
+      
+      
+              .card .header {
+                  color: rgb(223, 223, 223);
+                  padding: 5px;
+                  height: 115px;
+                  margin-left: 12px;
+                  position: relative;
+                  border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+              }
