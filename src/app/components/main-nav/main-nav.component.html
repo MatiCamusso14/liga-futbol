@@ -8,38 +8,22 @@
                     </button>
                 </div>
             </span>
-
             <span class="titulo-principal">
                 LIGA DE FUTBOL
             </span>
-
             <span class="espacioncentral"></span>
-
             <button mat-button (click)="toHome()">
                 <mat-icon>home</mat-icon>
             </button>
-
             <button mat-button (click)="logOut()">
-                <mat-icon>cancel</mat-icon>
+                <mat-icon>account_circle</mat-icon>
             </button>
         </mat-toolbar>
 
-        <mat-drawer-container color="primary" class="ventana">
-
+        <mat-drawer-container color="primary" class="ventana" autosize>
             <mat-drawer #drawer class=".mat-drawer" fixedInViewport="true"
                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                 [mode]="(isHandset$ | async) ? 'over' : 'side'">
-
-                <mat-expansion-panel>
-
-                    <mat-expansion-panel-header>
-                        <mat-panel-title class="titulo" >
-                            ARCHIVO
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <p></p>
-
                     <a mat-label  class="boton2" (click)="drawer.toggle()"
                         fxLayout="row" (click)="irALocatarios()">
                         <div class="icono">
@@ -50,9 +34,6 @@
                             Equipos
                         </div>
                     </a>
-
-                    <p></p>
-
                     <a mat-label  class="boton2" (click)="drawer.toggle()"
                         fxLayout="row" (click)="irALocadores()">
                         <div class="icono">
@@ -63,9 +44,6 @@
                             Jugadores sancionados
                         </div>
                     </a>
-
-                    <p></p>
-
                     <a mat-label  class="boton2" (click)="drawer.toggle()"
                         fxLayout="row" (click)="irAInmuebles()">
                         <div class="icono">
@@ -76,18 +54,9 @@
                             Comprobar sancionados
                         </div>
                     </a>
-
-                    <p></p>
-
-                </mat-expansion-panel>
-
             </mat-drawer>
-
-
         </mat-drawer-container>
-
     </div>
-
 
     <router-outlet></router-outlet>
 </body>

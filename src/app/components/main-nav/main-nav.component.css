@@ -27,6 +27,7 @@
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.287);
     position: fixed;
     top: 64px;
+    padding: 10px 8px 0;
 }
 
 .formatos{
@@ -41,7 +42,7 @@
     width: 190px;
     margin: 0 8px;
   }
-  
+
   .subti {
       margin-left: 5%;
   }
@@ -49,7 +50,7 @@
   .paletaColores {
     margin-left: 10px;
   }
-  
+
   .center {
     position: absolute;
     top: 50%;
@@ -79,6 +80,12 @@
     text-align: start;
     width: 100%;
     cursor: pointer;
+    margin: 8px 0;
+    padding: 10px 8px 4px;
+}
+
+.boton2:hover {
+    background: #CFCFCF;
 }
 
 .boton3{
