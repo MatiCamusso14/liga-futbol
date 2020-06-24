@@ -25,7 +25,7 @@
                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                 [mode]="(isHandset$ | async) ? 'over' : 'side'">
                     <a mat-label  class="boton2" (click)="drawer.toggle()"
-                        fxLayout="row" (click)="irALocatarios()">
+                        fxLayout="row" (click)="irAEquipos()">
                         <div class="icono">
                             <mat-icon>tour
                             </mat-icon> &nbsp;
@@ -34,8 +34,8 @@
                             Equipos
                         </div>
                     </a>
-                    <a mat-label  class="boton2" (click)="drawer.toggle()"
-                        fxLayout="row" (click)="irALocadores()">
+                    <a mat-label  class="boton2" (click)="drawer.toggle()" (click)="irASancionados()"
+                        fxLayout="row">
                         <div class="icono">
                             <mat-icon>account_circle
                             </mat-icon> &nbsp;
@@ -44,8 +44,8 @@
                             Jugadores sancionados
                         </div>
                     </a>
-                    <a mat-label  class="boton2" (click)="drawer.toggle()"
-                        fxLayout="row" (click)="irAInmuebles()">
+                    <a mat-label  class="boton2" (click)="drawer.toggle()" (click)="comprobarSancionados()"
+                        fxLayout="row">
                         <div class="icono">
                             <mat-icon>verified_user
                             </mat-icon> &nbsp;

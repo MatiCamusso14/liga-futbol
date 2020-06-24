@@ -37,24 +37,16 @@ export class MainNavComponent implements OnInit {
     }
   }
 
-  irALocatarios() {
-    this.router.navigate(['main/locatarios-tabla']);
+  irAEquipos() {
+    this.router.navigate(['main/equipos-tabla']);
   }
 
-  irALocadores() {
-    this.router.navigate(['main/locadores-tabla']);
+  irASancionados() {
+    this.router.navigate(['main/sancionados-tabla']);
   }
 
-  irAInmuebles() {
-    this.router.navigate(['main/inmuebles-tabla']);
-  }
-
-  irARecibos() {
-    this.router.navigate(['main/recibos-tabla']);
-  }
-
-  irAServicios() {
-    this.router.navigate(['main/servicios-tabla']);
+  comprobarSancionados() {
+    this.router.navigate(['main/comprobar-sancionados']);
   }
 
   toHome() {

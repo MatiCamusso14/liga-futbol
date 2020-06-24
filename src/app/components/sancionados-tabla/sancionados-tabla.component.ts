@@ -4,23 +4,27 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { Equipos } from 'src/app/interfaces/equipos';
+import { Jugador } from 'src/app/interfaces/jugador';
 
 @Component({
-  selector: 'app-equipos-tabla',
-  templateUrl: './equipos-tabla.component.html',
-  styleUrls: ['./equipos-tabla.component.css']
+  selector: 'app-sancionados-tabla',
+  templateUrl: './sancionados-tabla.component.html',
+  styleUrls: ['./sancionados-tabla.component.css']
 })
-export class EquiposTablaComponent implements OnInit {
+export class SancionadosTablaComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private router: Router) { }
   cargaPendientes = true;
-  displayedColumns = ['nombre', 'acciones'];
-  dataSource = new MatTableDataSource<Equipos>();
-  tablaEquipos = [
-    { nombre: 'River'},
-    { nombre: 'Racing'},
-    { nombre: 'Independiente'},
+  displayedColumns = ['nombre', 'equipo' ,'acciones'];
+  dataSource = new MatTableDataSource<Jugador>();
+  tablaJugadores = [
+    { nombre: 'Juan Fernando Quintero', equipo:'River'},
+    { nombre: 'Milton Casco', equipo:'River'},
+    { nombre: 'Darío Cvitanich', equipo:'Racing'},
+    { nombre: 'Marcelo Díaz', equipo:'Racing'},
+    { nombre: 'Leonardo Ponzio', equipo:'River'},
+    { nombre: 'Silvio Romero', equipo:'Independiente'},
+    { nombre: 'Franco Armani', equipo:'River'},
   ];
   itemPorPagina;
   verificarAcceso = true;
@@ -53,7 +57,7 @@ export class EquiposTablaComponent implements OnInit {
   }
 
   async filtroEliminados() {
-    this.dataSource.data = await this.tablaEquipos;
+    this.dataSource.data = await this.tablaJugadores;
   }
 
   verJugadores(element) {
@@ -64,10 +68,6 @@ export class EquiposTablaComponent implements OnInit {
 
   }
 
-  editar(element) {
-
-  }
-
   nuevo() {
     
   }
@@ -75,5 +75,5 @@ export class EquiposTablaComponent implements OnInit {
   ngOnInit(): void {
     this.filtroEliminados();
   }
-}
 
+}

@@ -1,0 +1,21 @@
+<div fxLayoutAlign="center center" fxFill>
+
+
+
+    <div fxLayout="column">
+
+        <div class="titulo">
+            <h2>Comprobar sanción</h2>
+            <input type="file" class="invisible" id="file" #fileInput (change)="leerFoto()" accept=".jpg">
+        </div>
+
+        <div class="importar" fxLayoutGap="20px">
+
+            <div>
+                <button type="button" color="primary" mat-raised-button (click)="fileInput.click()">Subir foto</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
