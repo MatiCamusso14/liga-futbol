@@ -1,12 +1,26 @@
 .contenedor{
-    padding-top: 80px;
+    padding-top: 100px;
   }
 
-  .titulo {
-    align-content: center;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-  }  
+.inner-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-item{
+  padding: 0 30px;
+}
+
+.select{
+  margin-top: 1.34375em;
+}
+
+.titulo {
+  align-content: center;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
 
 .importar{
       text-align: center;
@@ -24,13 +38,13 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  
+
   width: 87%;
   margin-left: 8%;
   margin-right: 9%;
   overflow: auto;
   text-align: center;
-  
+
   position:relative;
   margin-bottom: 50px;
 }
@@ -42,22 +56,23 @@
 
 .button-row2 {
   margin: 65px 0px;
-  text-align: center;   
+  text-align: center;
 }
 
 .button-row {
-  text-align: center;   
+  text-align: center;
+  padding-top: 50px;
 }
 
 .title-col {
   flex: 0 0 100px !important;
   white-space: unset !important;
-  
+
 }
 
 .botonModelo {
   text-align: center;
-  margin-top: 5%;  
+  margin-top: 5%;
 }
 
 .aviso {
