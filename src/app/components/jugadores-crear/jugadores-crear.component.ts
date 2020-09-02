@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JugadoresService } from 'src/app/services/jugadores.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -12,15 +12,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class JugadoresCrearComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder, private jugadoresService: JugadoresService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private route: ActivatedRoute) { }
 
   jugadoresForm;
   cantidad = 0;
   fechaDesde = new Date();
   sancionado = '2';
+  nombreEquipo;
 
   cancel() {
-    this.router.navigate(['main/jugadores-tabla']);
+    this.router.navigate(['main/jugadores-tabla/' + this.nombreEquipo]);
   }
 
   prueba() {
@@ -47,6 +48,11 @@ export class JugadoresCrearComponent implements OnInit {
       'desde': [null, Validators.required],
       'cantidad': [null, [Validators.required, Validators.min(0), Validators.max(999999)]],
     });
+    {
+      this.route.params.forEach((params: Params) => {
+        this.nombreEquipo = params['equipo'];
+      });
+    }
     await this.prueba();
   }
 }

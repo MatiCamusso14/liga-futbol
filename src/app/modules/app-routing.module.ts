@@ -68,7 +68,7 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
-        path: 'jugadores-crear',
+        path: 'jugadores-crear/:equipo',
         component: JugadoresCrearComponent,
         data: { title: 'home' },
         canActivate: [AuthGuardService]
