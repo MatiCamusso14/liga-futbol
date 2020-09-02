@@ -15,16 +15,16 @@ export class SancionadosTablaComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private router: Router) { }
   cargaPendientes = true;
-  displayedColumns = ['nombre', 'equipo' ,'fecha-sancion', 'cantidad-partidos' ,'acciones'];
+  displayedColumns = ['nombre', 'equipo' ,'fecha-sancion', 'partidosRestantes' ,'acciones'];
   dataSource = new MatTableDataSource<Jugador>();
   tablaJugadores = [
-    { nombre: 'Juan Fernando Quintero', equipo:'River', fechaSancion: '19/06/2020', partidosRestantes: '4'},
-    { nombre: 'Milton Casco', equipo:'River', fechaSancion: '24/06/2020', partidosRestantes: '7'},
-    { nombre: 'Darío Cvitanich', equipo:'Racing', fechaSancion: '20/05/2020', partidosRestantes: '5'},
-    { nombre: 'Marcelo Díaz', equipo:'Racing', fechaSancion: '10/06/2020', partidosRestantes: '5'},
-    { nombre: 'Leonardo Ponzio', equipo:'River', fechaSancion: '11/06/2020', partidosRestantes: '2'},
-    { nombre: 'Silvio Romero', equipo:'Independiente', fechaSancion: '15/06/2020', partidosRestantes: '1'},
-    { nombre: 'Franco Armani', equipo:'River', fechaSancion: '28/05/2020', partidosRestantes: '3'},
+    { nombre: 'Juan Fernando Quintero', equipo:'River', fechaSancion: '19/06/2020', partidosRestantes: 4},
+    { nombre: 'Milton Casco', equipo:'River', fechaSancion: '24/06/2020', partidosRestantes: 7},
+    { nombre: 'Darío Cvitanich', equipo:'Racing', fechaSancion: '20/05/2020', partidosRestantes: 5},
+    { nombre: 'Marcelo Díaz', equipo:'Racing', fechaSancion: '10/06/2020', partidosRestantes: 5},
+    { nombre: 'Leonardo Ponzio', equipo:'River', fechaSancion: '11/06/2020', partidosRestantes: 2},
+    { nombre: 'Silvio Romero', equipo:'Independiente', fechaSancion: '15/06/2020', partidosRestantes: 1},
+    { nombre: 'Franco Armani', equipo:'River', fechaSancion: '28/05/2020', partidosRestantes: 3},
   ];
   itemPorPagina;
   verificarAcceso = true;

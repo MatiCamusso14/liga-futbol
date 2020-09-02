@@ -1,0 +1,74 @@
+<div class="contenido">
+    <br>
+
+    <div class="titulo">
+        <h2>Jugadores de {{nombreEquipo}}</h2>
+    </div>
+
+    <div class="filtro">
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+    </div>
+    <div class="example-container mat-elevation-z8">
+
+        <table mat-table class="tabla" #table matSort [dataSource]="dataSource">
+
+            <!-- Title Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="foto">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let element" class="title-col">
+                    <mat-icon>account_box
+                    </mat-icon>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="inhabilitado">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Inhabilitado </th>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{comprobarHabilitacion(element.inhabilitado)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="desde">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Desde </th>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{element.desde}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="partidosCumplir">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Partidos por cumplir </th>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{element.partidosCumplir}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones" class="columnaboton">
+
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas-ce">Acciones</th>
+                <td mat-cell *matCellDef="let element" class="title-col-ce">
+
+                    <button mat-button color="accent" matTooltip="Editar" (click)="editar(element)">
+                        <mat-icon>create</mat-icon>
+                    </button>
+
+                    <button mat-button color="warn" matTooltip="Eliminar" (click)="eliminar(element)">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </td>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons [pageSize]="itemPorPagina"></mat-paginator>
+    </div>
+
+    <div class="button-row">
+        <a mat-fab color="accent" (click)="nuevo()">
+            <mat-icon>add</mat-icon>
+        </a>
+    </div>
+</div>

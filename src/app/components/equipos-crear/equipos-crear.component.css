@@ -1,0 +1,81 @@
+.contenido{
+    padding-top: 15%;
+  }
+  
+  .formato{
+      line-height: 85px;
+    }
+  
+  .texto{
+    text-align: left;
+  }
+
+  .botonGuardar {
+    background: #607d8b;
+  }
+  
+  .titulo {
+    align-content: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }  
+    
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 60%;
+        margin-left: 6%;
+        margin-right: 6%;
+      }
+      
+      .alineacion{
+      
+        text-align: center;
+      
+      }
+      .example-full-width {
+        width: 30%;
+        margin-left: 35%;
+        margin-right: 6%;
+        text-align: left;
+       
+      }
+      
+      .example-full-width:nth-last-child() {
+        margin-bottom: 10px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      
+      
+      .button-row {
+        margin: 10px 0;
+        
+      }
+      
+      .button-row2 {
+        margin: 65px 0px;
+        text-align: center;
+      }
+      
+      .example-h2 {
+        margin: 10px;
+      }
+      
+      .example-section {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        height: 60px;
+      }
+      
+      .example-margin {
+        margin: 0 10px;
+      
+      }
+  
+      .colorTextoDesabilitado{
+        color: #666;
+      }

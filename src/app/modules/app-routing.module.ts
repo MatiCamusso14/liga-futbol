@@ -7,6 +7,8 @@ import { LoginComponent } from '../components/login/login.component';
 import { EquiposTablaComponent } from '../components/equipos-tabla/equipos-tabla.component';
 import { ComprobarSancionadosComponent } from '../components/comprobar-sancionados/comprobar-sancionados.component';
 import { SancionadosTablaComponent } from '../components/sancionados-tabla/sancionados-tabla.component';
+import { JugadoresTablaComponent } from '../components/jugadores-tabla/jugadores-tabla.component';
+import { EquiposCrearComponent } from '../components/equipos-crear/equipos-crear.component';
 
 
 const routes: Routes = [
@@ -49,6 +51,18 @@ const routes: Routes = [
       {
         path: 'comprobar-sancionados',
         component: ComprobarSancionadosComponent,
+        data: { title: 'home' },
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'jugadores-tabla/:equipo',
+        component: JugadoresTablaComponent,
+        data: { title: 'home' },
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'equipos-crear',
+        component: EquiposCrearComponent,
         data: { title: 'home' },
         canActivate: [AuthGuardService]
       },

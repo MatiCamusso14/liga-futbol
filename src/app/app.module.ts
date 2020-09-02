@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
@@ -11,6 +12,8 @@ import { EquiposTablaComponent } from './components/equipos-tabla/equipos-tabla.
 import { LoginComponent } from './components/login/login.component';
 import { ComprobarSancionadosComponent } from './components/comprobar-sancionados/comprobar-sancionados.component';
 import { SancionadosTablaComponent } from './components/sancionados-tabla/sancionados-tabla.component';
+import { JugadoresTablaComponent } from './components/jugadores-tabla/jugadores-tabla.component';
+import { EquiposCrearComponent } from './components/equipos-crear/equipos-crear.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +23,18 @@ import { SancionadosTablaComponent } from './components/sancionados-tabla/sancio
     EquiposTablaComponent,
     LoginComponent,
     ComprobarSancionadosComponent,
-    SancionadosTablaComponent
+    SancionadosTablaComponent,
+    JugadoresTablaComponent,
+    EquiposCrearComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

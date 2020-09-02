@@ -1,0 +1,67 @@
+.contenido {
+    padding-top: 65px;
+  }
+
+  .tabla{
+    width: 100%;
+  }
+
+
+  .filtro{
+    margin-left: 12%;
+  }
+  
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    
+    width: 87%;
+    margin-left: 8%;
+    margin-right: 9%;
+    overflow: auto;
+    text-align: center;
+    
+    position:relative;
+    margin-bottom: 86px;
+  }
+  
+  .titulosfilas{
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .title-col {
+    flex: 0 0 100px !important;
+    white-space: unset !important;
+    text-align: left;
+  }
+
+  .titulosfilas-ce{
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .title-col-ce {
+    flex: 0 0 100px !important;
+    white-space: unset !important;
+    text-align: center;
+  }
+  
+  .button-row {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  @media(min-width: 1024px) {
+    .button-row {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    }
+    }
+  
+.titulo {
+  align-content: center;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}  
