@@ -14,6 +14,7 @@ import { ComprobarSancionadosComponent } from './components/comprobar-sancionado
 import { SancionadosTablaComponent } from './components/sancionados-tabla/sancionados-tabla.component';
 import { JugadoresTablaComponent } from './components/jugadores-tabla/jugadores-tabla.component';
 import { EquiposCrearComponent } from './components/equipos-crear/equipos-crear.component';
+import { JugadoresCrearComponent } from './components/jugadores-crear/jugadores-crear.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EquiposCrearComponent } from './components/equipos-crear/equipos-crear.
     ComprobarSancionadosComponent,
     SancionadosTablaComponent,
     JugadoresTablaComponent,
-    EquiposCrearComponent
+    EquiposCrearComponent,
+    JugadoresCrearComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { ComprobarSancionadosComponent } from '../components/comprobar-sancionad
 import { SancionadosTablaComponent } from '../components/sancionados-tabla/sancionados-tabla.component';
 import { JugadoresTablaComponent } from '../components/jugadores-tabla/jugadores-tabla.component';
 import { EquiposCrearComponent } from '../components/equipos-crear/equipos-crear.component';
+import { JugadoresCrearComponent } from '../components/jugadores-crear/jugadores-crear.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,12 @@ const routes: Routes = [
       {
         path: 'equipos-crear',
         component: EquiposCrearComponent,
+        data: { title: 'home' },
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'jugadores-crear',
+        component: JugadoresCrearComponent,
         data: { title: 'home' },
         canActivate: [AuthGuardService]
       },

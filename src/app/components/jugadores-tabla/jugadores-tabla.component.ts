@@ -91,7 +91,7 @@ export class JugadoresTablaComponent implements OnInit {
   }
 
   nuevo() {
-
+    this.router.navigate(['main/jugadores-crear']);
   }
 
   ngOnInit(): void {

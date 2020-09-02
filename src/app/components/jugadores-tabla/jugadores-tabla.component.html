@@ -5,12 +5,19 @@
         <h2>Jugadores de {{nombreEquipo}}</h2>
     </div>
 
-    <div class="filtro">
-        <mat-form-field>
+    <mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile>
+          <mat-form-field>
             <mat-label>Filtro</mat-label>
             <input matInput (keyup)="applyFilter($event)">
-        </mat-form-field>
-    </div>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button color="primary" (click)="nuevo()">
+            Agregar nuevo jugador
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
     <div class="example-container mat-elevation-z8">
 
         <table mat-table class="tabla" #table matSort [dataSource]="dataSource">
@@ -64,11 +71,5 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons [pageSize]="itemPorPagina"></mat-paginator>
-    </div>
-
-    <div class="button-row">
-        <a mat-fab color="accent" (click)="nuevo()">
-            <mat-icon>add</mat-icon>
-        </a>
     </div>
 </div>
