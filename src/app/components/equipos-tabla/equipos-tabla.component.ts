@@ -64,7 +64,7 @@ export class EquiposTablaComponent implements OnInit {
   }
 
   editar(element) {
-
+    this.router.navigate(['main/equipos-editar/' + element.id]);
   }
 
   nuevo() {

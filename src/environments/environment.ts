@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  configFile: 'http://localhost:4200/assets/config.json'
 };
 
 /*

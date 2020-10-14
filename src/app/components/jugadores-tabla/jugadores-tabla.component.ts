@@ -8,6 +8,7 @@ import { Equipos } from 'src/app/interfaces/equipos';
 import { ConfirmarEliminarComponent } from '../dialogos/confirmar-eliminar/confirmar-eliminar.component';
 import { EquiposService } from 'src/app/services/equipos.service';
 import { element } from 'protractor';
+import { JugadoresService } from 'src/app/services/jugadores.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { element } from 'protractor';
 })
 export class JugadoresTablaComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute, private equiposService: EquiposService) { }
+  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute, private equiposService: EquiposService, private jugadoresServices: JugadoresService) { }
   cargaPendientes = true;
   displayedColumns = ['nombre', 'apellido', 'foto', 'inhabilitado', 'desde', 'partidosCumplir', 'acciones'];
   dataSource = new MatTableDataSource<Equipos>();
@@ -69,7 +70,7 @@ export class JugadoresTablaComponent implements OnInit {
   }
 
   comprobarHabilitacion(data) {
-    if (data.status !== 'unbanned') {
+    if (data.status !== undefined) {
       return 'Si';
     } else {
       data.desde = '-';
@@ -84,7 +85,13 @@ export class JugadoresTablaComponent implements OnInit {
 
 
   eliminar(element) {
-    this.dialog.open(ConfirmarEliminarComponent);
+    const dialogRef = this.dialog.open(ConfirmarEliminarComponent);
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        await this.jugadoresServices.eliminar(element.id);
+        location.reload();
+      }
+    });
   }
 
   editar(element) {
@@ -101,6 +108,7 @@ export class JugadoresTablaComponent implements OnInit {
       const element = equipos[index];
       if (element.name === this.nombreEquipo) {
         this.dataSource.data = element.players;
+        console.log(element.players);
       }
     }
     this.cargaPendientes = false;

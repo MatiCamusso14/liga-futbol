@@ -14,17 +14,4 @@ export class ConfigService {
   getConfiguration(): Config {
     return ConfigService.config;
   }
-
-  load() {
-    const jsonPath = environment.configFile;
-    return new Promise((resolve, reject) => {
-      this.http.get<Config>(jsonPath).toPromise().then((response: Config) => {
-        // response.json es un Promise
-        ConfigService.config = response;
-        resolve();
-      }).catch((response: any) => {
-        reject(`Could not load configuration '${jsonPath}': ${JSON.stringify(response)}`);
-      });
-    });
-  }
 }
