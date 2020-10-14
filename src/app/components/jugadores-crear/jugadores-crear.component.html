@@ -1,5 +1,10 @@
+<div *ngIf="cargaPendientes" fxLayoutAlign="center center"
+    fxFill>
+    <mat-spinner></mat-spinner>
+</div>
+
 <form [formGroup]="jugadoresForm">
-    <div class="contenido">
+    <div class="contenido" *ngIf="!cargaPendientes">
 
         <div class="titulo">
             <h2>Crear jugador de {{nombreEquipo}}</h2>
@@ -17,58 +22,13 @@
                 </mat-error>
             </mat-form-field>
 
-            <div class="example-full-width" fxLayout="row" fxLayoutGap="50px">
-                <div>
-                    Sancionado: 
-                </div>
-                <mat-radio-group aria-label="Select an option" formControlName="sancionado" (change)="prueba()" [(ngModel)]="sancionado">
-                    <mat-radio-button value="1">Si &nbsp;&nbsp;</mat-radio-button>
-                    <mat-radio-button value="2">No &nbsp;&nbsp;</mat-radio-button>
-                </mat-radio-group>
-            </div>
-
-            <mat-form-field class="example-full-width" *ngIf="sancionado === '1'">
-                <input matInput formControlName="desde" [matDatepicker]="pickerFechaInicio" readonly
-                    [(ngModel)]="fechaDesde" placeholder="Fecha de inicio sanción" #fechaInicio class="texto">
-                <mat-datepicker-toggle matSuffix [for]="pickerFechaInicio"></mat-datepicker-toggle>
-                <mat-datepicker #pickerFechaInicio disabled="false"></mat-datepicker>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Apellido" formControlName="apellido" #apellido class="texto">
                 <mat-error>
-                    <span *ngIf="!jugadoresForm.get('desde').valid && jugadoresForm.get('desde').touched">Por
-                        favor seleccione una
-                        fecha</span>
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width" *ngIf="sancionado === '2'">
-                <input matInput disabled
-                    placeholder="Fecha de inicio sanción" value="-" #cantidadd
-                    class="texto">
-                <mat-error>
-                    <span *ngIf="!jugadoresForm.get('desde').valid && jugadoresForm.get('desde').touched">Por
-                        favor ingrese un
-                        número entero mayor a 0</span>
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width" *ngIf="sancionado === '1'">
-                <input type="number" min="0" matInput formControlName="cantidad"
-                    placeholder="Cantidad de partidos a cumplir" pattern="^[0-9]+" [(ngModel)]="cantidad" #cantidadd
-                    class="texto">
-                <mat-error>
-                    <span *ngIf="!jugadoresForm.get('cantidad').valid && jugadoresForm.get('cantidad').touched">Por
-                        favor ingrese un
-                        número entero mayor a 0</span>
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width" *ngIf="sancionado === '2'">
-                <input matInput disabled
-                    placeholder="Cantidad de partidos a cumplir" value="-" #cantidadd
-                    class="texto">
-                <mat-error>
-                    <span *ngIf="!jugadoresForm.get('cantidad').valid && jugadoresForm.get('cantidad').touched">Por
-                        favor ingrese un
-                        número entero mayor a 0</span>
+                    <span *ngIf="!jugadoresForm.get('apellido').valid && jugadoresForm.get('apellido').touched">Por
+                        favor ingrese
+                        un
+                        apellido</span>
                 </mat-error>
             </mat-form-field>
 
@@ -76,7 +36,7 @@
 
 
         <div class="button-row2">
-            <button (click)="nuevo(nombre.value)" [disabled]="!jugadoresForm.valid" mat-raised-button color="accent">
+            <button (click)="nuevo(nombre.value, apellido.value)" [disabled]="!jugadoresForm.valid" mat-raised-button color="accent">
                 <mat-icon>save</mat-icon>
             </button>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;

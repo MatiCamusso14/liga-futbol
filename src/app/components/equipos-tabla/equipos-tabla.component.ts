@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Equipos } from 'src/app/interfaces/equipos';
+import { ConfirmarEliminarComponent } from '../dialogos/confirmar-eliminar/confirmar-eliminar.component';
+import { EquiposService } from 'src/app/services/equipos.service';
 
 @Component({
   selector: 'app-equipos-tabla',
@@ -13,15 +15,10 @@ import { Equipos } from 'src/app/interfaces/equipos';
 })
 export class EquiposTablaComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private equiposService: EquiposService) { }
   cargaPendientes = true;
   displayedColumns = ['nombre', 'acciones'];
   dataSource = new MatTableDataSource<Equipos>();
-  tablaEquipos = [
-    { nombre: 'River'},
-    { nombre: 'Racing'},
-    { nombre: 'Independiente'},
-  ];
   itemPorPagina;
   verificarAcceso = true;
   enBlanco = false;
@@ -52,16 +49,18 @@ export class EquiposTablaComponent implements OnInit {
     localStorage.setItem('paginador', JSON.stringify(event.pageSize));
   }
 
-  async filtroEliminados() {
-    this.dataSource.data = await this.tablaEquipos;
-  }
-
   verJugadores(element) {
-    this.router.navigate(['main/jugadores-tabla/' + element.nombre]);
+    this.router.navigate(['main/jugadores-tabla/' + element.name]);
   }
 
   eliminar(element) {
-
+    const dialogRef = this.dialog.open(ConfirmarEliminarComponent);
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        await this.equiposService.eliminar(element.id);
+        location.reload();
+      }
+    });
   }
 
   editar(element) {
@@ -72,8 +71,14 @@ export class EquiposTablaComponent implements OnInit {
     this.router.navigate(['main/equipos-crear']);
   }
 
-  ngOnInit(): void {
-    this.filtroEliminados();
+  async cargarTabla() {
+    this.dataSource.data = await this.equiposService.get();
+    this.cargaPendientes = false;
+  }
+
+  ngOnInit() {
+    this.cargarTabla();
+    console.log(this.dataSource.data);
   }
 }
 

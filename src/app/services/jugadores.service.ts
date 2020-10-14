@@ -7,7 +7,34 @@ export class JugadoresService {
 
   constructor() { }
 
-  nuevo(nombre) {
-
+  async nuevo(jugador) {
+    let tokenRequest = await fetch('https://liga-futbol.herokuapp.com/api/v1.0/auth/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: "santidalmassoj@gmail.com",
+        password: "santi123"
+      })
+    });
+    const token = await tokenRequest.json();
+    const teamRequest = fetch('https://liga-futbol.herokuapp.com/api/v1.0/players', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+          'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify({
+          name: jugador.name,
+          surname: jugador.surname,
+          status: jugador.status,
+          team_id: jugador.team_id
+        })
+      });
+    const team = await (await teamRequest).json();
+    return team;
   }
 }

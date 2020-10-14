@@ -21,7 +21,8 @@ export class EquiposCrearComponent implements OnInit {
   }
 
   async nuevo(nombre) {
-    this.equiposService.nuevo(nombre);
+    await this.equiposService.nuevo(nombre);
+    this.router.navigate(['main/equipos-tabla'])
   }
 
 

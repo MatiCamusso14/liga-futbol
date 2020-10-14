@@ -5,6 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Equipos } from 'src/app/interfaces/equipos';
+import { ConfirmarEliminarComponent } from '../dialogos/confirmar-eliminar/confirmar-eliminar.component';
+import { EquiposService } from 'src/app/services/equipos.service';
+import { element } from 'protractor';
 
 
 @Component({
@@ -14,9 +17,9 @@ import { Equipos } from 'src/app/interfaces/equipos';
 })
 export class JugadoresTablaComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
+  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute, private equiposService: EquiposService) { }
   cargaPendientes = true;
-  displayedColumns = ['nombre', 'foto', 'inhabilitado', 'desde', 'partidosCumplir', 'acciones'];
+  displayedColumns = ['nombre', 'apellido', 'foto', 'inhabilitado', 'desde', 'partidosCumplir', 'acciones'];
   dataSource = new MatTableDataSource<Equipos>();
   tablaEquipos = [
     {
@@ -66,9 +69,11 @@ export class JugadoresTablaComponent implements OnInit {
   }
 
   comprobarHabilitacion(data) {
-    if (data) {
+    if (data.status !== 'unbanned') {
       return 'Si';
     } else {
+      data.desde = '-';
+      data.partidosCumplir = '-';
       return 'No';
     }
   }
@@ -77,13 +82,9 @@ export class JugadoresTablaComponent implements OnInit {
     localStorage.setItem('paginador', JSON.stringify(event.pageSize));
   }
 
-  async filtroEliminados() {
-    this.dataSource.data = await this.tablaEquipos;
-  }
-
 
   eliminar(element) {
-
+    this.dialog.open(ConfirmarEliminarComponent);
   }
 
   editar(element) {
@@ -94,13 +95,24 @@ export class JugadoresTablaComponent implements OnInit {
     this.router.navigate(['main/jugadores-crear/' + this.nombreEquipo]);
   }
 
+  async cargarTabla() {
+    const equipos = await this.equiposService.get();
+    for (let index = 0; index < equipos.length; index++) {
+      const element = equipos[index];
+      if (element.name === this.nombreEquipo) {
+        this.dataSource.data = element.players;
+      }
+    }
+    this.cargaPendientes = false;
+  }
+
   ngOnInit(): void {
     {
       this.route.params.forEach((params: Params) => {
         this.nombreEquipo = params['equipo'];
       });
     }
-    this.filtroEliminados();
+    this.cargarTabla();
   }
 
 }

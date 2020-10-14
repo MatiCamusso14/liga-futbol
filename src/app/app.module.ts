@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,12 @@ import { SancionadosTablaComponent } from './components/sancionados-tabla/sancio
 import { JugadoresTablaComponent } from './components/jugadores-tabla/jugadores-tabla.component';
 import { EquiposCrearComponent } from './components/equipos-crear/equipos-crear.component';
 import { JugadoresCrearComponent } from './components/jugadores-crear/jugadores-crear.component';
+import { ConfirmarEliminarComponent } from './components/dialogos/confirmar-eliminar/confirmar-eliminar.component';
+import { JugadoresEditarComponent } from './components/jugadores-editar/jugadores-editar.component';
+import { EquiposEditarComponent } from './components/equipos-editar/equipos-editar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfigService } from './services/configuration/config.service';
+import { LoginIncorrectoComponent } from './components/snack-bar/login-incorrecto/login-incorrecto.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,11 @@ import { JugadoresCrearComponent } from './components/jugadores-crear/jugadores-
     SancionadosTablaComponent,
     JugadoresTablaComponent,
     EquiposCrearComponent,
-    JugadoresCrearComponent
+    JugadoresCrearComponent,
+    ConfirmarEliminarComponent,
+    JugadoresEditarComponent,
+    EquiposEditarComponent,
+    LoginIncorrectoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +46,12 @@ import { JugadoresCrearComponent } from './components/jugadores-crear/jugadores-
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,9 @@
-<div class="contenido">
+<div *ngIf="cargaPendientes" fxLayoutAlign="center center"
+    fxFill>
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="contenido" *ngIf="!cargaPendientes">
     <br>
 
     <div class="titulo">
@@ -25,7 +30,12 @@
             <!-- Title Column -->
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Nombre </th>
-                <td mat-cell *matCellDef="let element" class="title-col"> {{element.nombre}} </td>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Apellido </th>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{element.surname}} </td>
             </ng-container>
 
             <ng-container matColumnDef="foto">
@@ -40,7 +50,7 @@
 
             <ng-container matColumnDef="inhabilitado">
                 <th mat-header-cell *matHeaderCellDef class="titulosfilas" mat-sort-header> Inhabilitado </th>
-                <td mat-cell *matCellDef="let element" class="title-col"> {{comprobarHabilitacion(element.inhabilitado)}} </td>
+                <td mat-cell *matCellDef="let element" class="title-col"> {{comprobarHabilitacion(element)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="desde">

@@ -1,0 +1,38 @@
+.tipografia{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 36%;
+  }
+  .forma{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+  }
+  
+  .container{
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 90%;
+    margin-left: 35%;
+    position: absolute;
+    display: flex;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .carta{
+    -webkit-box-shadow: 6px 13px 75px 3px rgba(0,0,0,0.19);
+  -moz-box-shadow: 6px 13px 75px 3px rgba(0,0,0,0.19);
+  box-shadow: 6px 13px 75px 3px rgba(0,0,0,0.19);
+  }
+  
+  .spin{
+    margin-left: 80%;
+    position: absolute;
+  }
+  
+  

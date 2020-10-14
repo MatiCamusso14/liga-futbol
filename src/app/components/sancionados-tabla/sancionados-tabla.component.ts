@@ -16,7 +16,7 @@ export class SancionadosTablaComponent implements OnInit {
   constructor(private dialog: MatDialog, private router: Router) { }
   cargaPendientes = true;
   displayedColumns = ['nombre', 'equipo' ,'fecha-sancion', 'partidosRestantes' ,'acciones'];
-  dataSource = new MatTableDataSource<Jugador>();
+  dataSource = new MatTableDataSource<any>();
   tablaJugadores = [
     { nombre: 'Juan Fernando Quintero', equipo:'River', fechaSancion: '19/06/2020', partidosRestantes: 4},
     { nombre: 'Milton Casco', equipo:'River', fechaSancion: '24/06/2020', partidosRestantes: 7},

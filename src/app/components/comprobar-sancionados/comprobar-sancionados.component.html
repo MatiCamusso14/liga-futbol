@@ -1,23 +1,22 @@
-<div class="contenedor">
-      <div class="titulo">
-          <h2>Comprobar jugadores sancionados</h2>
-          <input type="file" class="invisible" id="file" #fileInput (change)="leerFoto()" accept=".jpg">
-      </div>
+<div *ngIf="cargaPendientes" fxLayoutAlign="center center" fxFill>
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="contenedor" *ngIf="!cargaPendientes">
+  <div class="titulo">
+    <h2>Comprobar jugadores sancionados</h2>
+    <input type="file" class="invisible" id="file" #fileInput (change)="leerFoto()" accept=".jpg">
+  </div>
   <div class="inner-container">
     <div class="container-item">
       <button type="button" color="primary" mat-raised-button (click)="fileInput.click()">Subir foto del equipo</button>
     </div>
     <div class="container-item">
-      <form>
-        <mat-form-field appearance="fill" class="select">
-          <mat-label>Equipo</mat-label>
-          <mat-select  name="equipos">
-            <mat-option value="Boca">Boca</mat-option>
-            <mat-option value="River">River</mat-option>
-            <mat-option value="Racing">Racing</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
+      <mat-form-field appearance="fill" class="select">
+        <mat-select [(ngModel)]="equipoSeleccionado" placeholder="Seleccionar equipo">
+          <mat-option *ngFor="let item of listaEquipos" value="null" [value]="item">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
   <div class="button-row">

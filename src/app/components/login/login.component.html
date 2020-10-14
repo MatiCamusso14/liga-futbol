@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+    <div>
+      <div>
+        <mat-card class="carta">
+          <p></p>
+          <mat-label class="tipografia" >Ingreso</mat-label>
+          <p></p>
+          
+            <div class="row">
+              <div class="col-md-4 text-center">
+  
+              </div>
+  
+              <div>
+                  
+                <div class="forma"> 
+  
+                  <mat-form-field  class = "example-full-width"> 
+                    <input  matInput (keyup.enter)="entrar(userEmail.value, userPassword.value);"  type="text" class="caja-texto" placeholder="Email" #userEmail required autofocus> 
+                  </mat-form-field>
+  
+                  <mat-form-field  class = "example-full-width"> 
+                      <input  matInput (keyup.enter)="entrar(userEmail.value, userPassword.value);" type="password" class="form-control mb-2" placeholder="Password" #userPassword required> 
+                  </mat-form-field>
+  
+                </div>
+  
+                  
+                  <p></p>
+  
+                
+                  <mat-spinner *ngIf="spinner" diameter="35" [style.display] class="spin"></mat-spinner><button mat-raised-button fxLayoutAlign="center center" color="primary" class="tipografia" (click)="entrar(userEmail.value, userPassword.value);">Entrar</button>
+                
+              </div>
+            </div>
+          </mat-card>
+        
+      </div>
+    </div>
+  </div>

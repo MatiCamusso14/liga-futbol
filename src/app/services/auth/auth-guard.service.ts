@@ -12,10 +12,10 @@ export class AuthGuardService {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean | UrlTree {
-    if (true) {
-      return true;
-    } else {
-      return this.router.parseUrl('/login');
-    }
+      if (localStorage.getItem('Logueado') === 'true') {
+        return true;
+      } else {
+        return this.router.parseUrl('/login');
+      }
   }
 }

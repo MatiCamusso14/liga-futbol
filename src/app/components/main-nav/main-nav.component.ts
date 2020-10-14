@@ -54,6 +54,7 @@ export class MainNavComponent implements OnInit {
   }
 
   logOut() {
+    localStorage.setItem('Logueado', 'false');
     this.router.navigate(['login']);
   }
 
