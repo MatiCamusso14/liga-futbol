@@ -21,6 +21,13 @@ import { EquiposEditarComponent } from './components/equipos-editar/equipos-edit
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './services/configuration/config.service';
 import { LoginIncorrectoComponent } from './components/snack-bar/login-incorrecto/login-incorrecto.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import * as firebase from '../../node_modules/firebase';
+import 'firebase/storage';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { ExpulsarJugadorComponent } from './components/dialogos/expulsar-jugador/expulsar-jugador.component';
+firebase.default.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -37,17 +44,20 @@ import { LoginIncorrectoComponent } from './components/snack-bar/login-incorrect
     ConfirmarEliminarComponent,
     JugadoresEditarComponent,
     EquiposEditarComponent,
-    LoginIncorrectoComponent
+    LoginIncorrectoComponent,
+    ExpulsarJugadorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
   ],
   providers: [
     ConfigService,

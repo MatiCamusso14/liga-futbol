@@ -48,13 +48,20 @@
         margin-right: auto;
       }
       
+      .botonFoto {
+        text-align: center;
+      }
       
       
       .button-row {
         margin: 10px 0;
         
       }
-      
+      .invisible {
+        opacity: 0;
+        top: 2px;
+        position: absolute;
+      }
       .button-row2 {
         margin: 65px 0px;
         text-align: center;

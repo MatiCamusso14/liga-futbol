@@ -16,8 +16,12 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/index.html",
+        "function": "helloWorld, deleteUsuario"
       }
     ]
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

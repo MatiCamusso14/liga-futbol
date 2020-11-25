@@ -32,11 +32,34 @@
                 </mat-error>
             </mat-form-field>
 
+            <div class="botonFoto" *ngIf="!fotoSubida">
+  
+                  <input type="file" class="invisible" id="file" #fileInput (change)="subirFoto($event)">
+            
+                <div class="importar" fxLayoutGap="20px">
+            
+            
+                    <div>
+                      <button type="button" color="primary" mat-raised-button (click)="abrirExplorador(fileInput)">Seleccionar imagen</button>
+                    </div>
+            
+                </div>
+          
+            
+              </div>
+
+              <div class="botonFoto" *ngIf="fotoSubida">
+  
+                Foto subida con éxito.
+        
+          
+            </div>
+
         </div>
 
 
         <div class="button-row2">
-            <button (click)="nuevo(nombre.value, apellido.value)" [disabled]="!jugadoresForm.valid" mat-raised-button color="accent">
+            <button (click)="nuevo(nombre.value, apellido.value)" [disabled]="!jugadoresForm.valid || !fotoSubida" mat-raised-button color="accent">
                 <mat-icon>save</mat-icon>
             </button>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;

@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
@@ -71,7 +71,7 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
         MatExpansionModule,
         MatSliderModule,
         MatSlideToggleModule,
-        MatDividerModule
+        MatDividerModule,
     ],
 
     imports: [

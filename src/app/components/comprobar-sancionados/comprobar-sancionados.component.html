@@ -3,24 +3,72 @@
 </div>
 
 <div class="contenedor" *ngIf="!cargaPendientes">
-  <div class="titulo">
-    <h2>Comprobar jugadores sancionados</h2>
-    <input type="file" class="invisible" id="file" #fileInput (change)="leerFoto()" accept=".jpg">
-  </div>
-  <div class="inner-container">
-    <div class="container-item">
-      <button type="button" color="primary" mat-raised-button (click)="fileInput.click()">Subir foto del equipo</button>
+  <div *ngIf="!loader">
+    <div class="titulo">
+      <h2>Comprobar jugadores sancionados</h2>
+      <input type="file" class="invisible" id="file" #fileInput (change)="leerFoto($event.target.files[0])"
+        accept=".jpg, .jpeg">
     </div>
-    <div class="container-item">
-      <mat-form-field appearance="fill" class="select">
-        <mat-select [(ngModel)]="equipoSeleccionado" placeholder="Seleccionar equipo">
-          <mat-option *ngFor="let item of listaEquipos" value="null" [value]="item">{{item.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="inner-container">
+      <div class="container-item" *ngIf="equipoSeleccionado != undefined">
+        <button type="button" color="primary" mat-raised-button (click)="fileInput.click()">Subir foto del
+          equipo</button>
+      </div>
+      <div class="container-item" *ngIf="equipoSeleccionado == undefined">
+        <button type="button" color="primary" disabled mat-raised-button (click)="fileInput.click()">Subir foto del
+          equipo</button>
+      </div>
+      <div class="container-item">
+        <mat-form-field appearance="fill" class="select">
+          <mat-select [(ngModel)]="equipoSeleccionado" placeholder="Seleccionar equipo">
+            <mat-option *ngFor="let item of listaEquipos" value="null" [value]="item">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
-  <div class="button-row">
-    <button mat-raised-button color="accent">Comprobar</button>
+
+  <div *ngIf="loader">
+    <div fxLayoutAlign="center center" fxFill fxLayout="column" fxLayoutGap="20px">
+      <div class="descripcionProgreso" *ngIf="progreso == 0">
+        Ajustando tamaño de imagen seleccionada.
+      </div>
+
+      <div class="descripcionProgreso" *ngIf="progreso > 0 && progreso < 39">
+        Descargando jugadores de base de datos {{jugadoresDescargados}} / {{totalJugadoresADescargar}}
+      </div>
+
+      <div class="descripcionProgreso" *ngIf="progreso == 39">
+        Cargando imagen seleccionada
+      </div>
+
+      <div class="descripcionProgreso" *ngIf="progreso >= 40 && progreso < 100">
+        Comparando caras con base de datos {{carasProcesadas}} / {{cantidadCarasDetectadas}}
+      </div>
+
+      <div class="descripcionProgreso" *ngIf="progreso === 100">
+        Proceso terminado
+      </div>
+
+      <div>
+        <mat-progress-spinner mode="determinate" [value]="progreso">
+        </mat-progress-spinner>
+      </div>
+
+      <div class="imagen" id="imagenpintada">
+        <div class="canvas" id="caras">
+
+        </div>
+      </div>
+
+
+
+      <div class="aviso">
+        <mat-card>Recuadro verde: Jugador habilitado - Recuadro rojo: Jugador no habilitado - Recuadro azul: Jugador no registrado en base de datos. </mat-card>
+      </div>
+    </div>
+
   </div>
+
 
 </div>

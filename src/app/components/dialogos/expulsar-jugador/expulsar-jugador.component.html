@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutGap="20px">
+
+    <mat-form-field class="example-full-width">
+        <input type="number" matInput placeholder="Cantidad de fechas" [(ngModel)]="fechas" #nombre class="texto">
+    </mat-form-field>
+
+</div>
+
+
+<div class="button-row2">
+    <button [disabled]="+fechas <= 0" [mat-dialog-close]="fechas"
+        mat-raised-button color="accent">
+        <mat-icon>save</mat-icon>
+    </button>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+    <a mat-raised-button color="warn" [mat-dialog-close]="-5">
+        <mat-icon>cancel</mat-icon>
+    </a>
+</div>

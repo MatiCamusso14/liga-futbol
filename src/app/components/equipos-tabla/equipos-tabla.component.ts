@@ -50,7 +50,8 @@ export class EquiposTablaComponent implements OnInit {
   }
 
   verJugadores(element) {
-    this.router.navigate(['main/jugadores-tabla/' + element.name]);
+    console.log(element);
+    this.router.navigate(['main/jugadores-tabla/' + element.id]);
   }
 
   eliminar(element) {

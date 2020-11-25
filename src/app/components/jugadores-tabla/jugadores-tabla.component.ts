@@ -9,6 +9,8 @@ import { ConfirmarEliminarComponent } from '../dialogos/confirmar-eliminar/confi
 import { EquiposService } from 'src/app/services/equipos.service';
 import { element } from 'protractor';
 import { JugadoresService } from 'src/app/services/jugadores.service';
+import { VerImagenComponent } from '../dialogos/ver-imagen/ver-imagen.component';
+import { ExpulsarJugadorComponent } from '../dialogos/expulsar-jugador/expulsar-jugador.component';
 
 
 @Component({
@@ -48,6 +50,7 @@ export class JugadoresTablaComponent implements OnInit {
   private paginator: MatPaginator;
   private sort: MatSort;
   nombreEquipo;
+  idEquipo;
 
   @ViewChild(MatSort) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -58,6 +61,7 @@ export class JugadoresTablaComponent implements OnInit {
     this.paginator = mp;
     this.setDataSourceAttributes();
   }
+  
 
   setDataSourceAttributes() {
     this.dataSource.paginator = this.paginator;
@@ -70,7 +74,9 @@ export class JugadoresTablaComponent implements OnInit {
   }
 
   comprobarHabilitacion(data) {
-    if (data.status !== undefined) {
+    if (data.ban !== null) {
+      data.desde = data.ban.date;
+      data.partidosCumplir = data.ban.matches;
       return 'Si';
     } else {
       data.desde = '-';
@@ -103,23 +109,46 @@ export class JugadoresTablaComponent implements OnInit {
   }
 
   async cargarTabla() {
+    this.dataSource.data = await this.jugadoresServices.getPorEquipo(+this.idEquipo);
+    console.log(this.dataSource.data);
+    this.cargaPendientes = false;
+  }
+
+  expulsar(element) {
+    const dialogRef = this.dialog.open(ExpulsarJugadorComponent);
+
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result > 0) {
+        this.cargaPendientes = true;
+        await this.jugadoresServices.expulsar(element, result);
+        this.cargarTabla();
+      }
+    })
+  }
+
+  verFoto(element) {
+    this.dialog.open(VerImagenComponent, {
+      data: JSON.stringify(element)
+    });
+  }
+
+  async traerNombreEquipo() {
     const equipos = await this.equiposService.get();
     for (let index = 0; index < equipos.length; index++) {
       const element = equipos[index];
-      if (element.name === this.nombreEquipo) {
-        this.dataSource.data = element.players;
-        console.log(element.players);
+      if (element.id === +this.idEquipo) {
+        this.nombreEquipo = element.name;
       }
     }
-    this.cargaPendientes = false;
   }
 
   ngOnInit(): void {
     {
       this.route.params.forEach((params: Params) => {
-        this.nombreEquipo = params['equipo'];
+        this.idEquipo = params['equipo'];
       });
     }
+    this.traerNombreEquipo();
     this.cargarTabla();
   }
 

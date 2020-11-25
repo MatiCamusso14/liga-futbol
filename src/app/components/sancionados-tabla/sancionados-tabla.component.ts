@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Jugador } from 'src/app/interfaces/jugador';
+import { JugadoresService } from 'src/app/services/jugadores.service';
 
 @Component({
   selector: 'app-sancionados-tabla',
@@ -13,19 +14,10 @@ import { Jugador } from 'src/app/interfaces/jugador';
 })
 export class SancionadosTablaComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private jugadoresService: JugadoresService) { }
   cargaPendientes = true;
-  displayedColumns = ['nombre', 'equipo' ,'fecha-sancion', 'partidosRestantes' ,'acciones'];
+  displayedColumns = ['nombre', 'fecha-sancion', 'partidosRestantes', 'acciones'];
   dataSource = new MatTableDataSource<any>();
-  tablaJugadores = [
-    { nombre: 'Juan Fernando Quintero', equipo:'River', fechaSancion: '19/06/2020', partidosRestantes: 4},
-    { nombre: 'Milton Casco', equipo:'River', fechaSancion: '24/06/2020', partidosRestantes: 7},
-    { nombre: 'Darío Cvitanich', equipo:'Racing', fechaSancion: '20/05/2020', partidosRestantes: 5},
-    { nombre: 'Marcelo Díaz', equipo:'Racing', fechaSancion: '10/06/2020', partidosRestantes: 5},
-    { nombre: 'Leonardo Ponzio', equipo:'River', fechaSancion: '11/06/2020', partidosRestantes: 2},
-    { nombre: 'Silvio Romero', equipo:'Independiente', fechaSancion: '15/06/2020', partidosRestantes: 1},
-    { nombre: 'Franco Armani', equipo:'River', fechaSancion: '28/05/2020', partidosRestantes: 3},
-  ];
   itemPorPagina;
   verificarAcceso = true;
   enBlanco = false;
@@ -56,10 +48,6 @@ export class SancionadosTablaComponent implements OnInit {
     localStorage.setItem('paginador', JSON.stringify(event.pageSize));
   }
 
-  async filtroEliminados() {
-    this.dataSource.data = await this.tablaJugadores;
-  }
-
   verJugadores(element) {
 
   }
@@ -69,11 +57,23 @@ export class SancionadosTablaComponent implements OnInit {
   }
 
   nuevo() {
-    
+
+  }
+
+  async cargarTabla() {
+    const jugadores = await this.jugadoresService.get();
+    this.dataSource.data = jugadores.filter(
+      (element, index, array) => {
+        return element.ban !== null;
+      }
+    );;
+    console.log(jugadores);
+    this.cargaPendientes = false;
   }
 
   ngOnInit(): void {
-    this.filtroEliminados();
+
+    this.cargarTabla();
   }
 
 }

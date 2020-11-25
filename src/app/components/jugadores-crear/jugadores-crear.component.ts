@@ -23,6 +23,9 @@ export class JugadoresCrearComponent implements OnInit {
   nombreEquipo;
   idEquipo;
   cargaPendientes = true;
+  nombreArchivo;
+  fotoSubida = false;
+  rutaArchivo;
 
   cancel() {
     this.router.navigate(['main/jugadores-tabla/' + this.nombreEquipo]);
@@ -34,8 +37,9 @@ export class JugadoresCrearComponent implements OnInit {
     jugador.surname = apellido;
     jugador.status = 'unbanned';
     jugador.team_id = this.idEquipo;
+    jugador.photo = this.rutaArchivo;
     await this.jugadoresService.nuevo(jugador);
-    this.router.navigate(['main/jugadores-tabla/' + this.nombreEquipo]);
+    this.router.navigate(['main/jugadores-tabla/' + this.idEquipo]);
   }
 
   async cargarIdEquipo() {
@@ -48,6 +52,30 @@ export class JugadoresCrearComponent implements OnInit {
     }
     this.cargaPendientes = false;
     console.log(this.idEquipo);
+  }
+
+  abrirExplorador(archivo) {
+    archivo.click();
+  }
+
+  subirFoto(event) {
+    for (let i = 0; i < event.target.files.length; i++) {
+      let datosFormulario = new FormData();
+      this.nombreArchivo = event.target.files[i].name;
+      datosFormulario.delete('archivo');
+      datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
+      let archivo = datosFormulario.get('archivo');
+      this.rutaArchivo = 'imagenes/' + this.idEquipo + '/' + this.nombreArchivo;
+
+      let referencia = this.jugadoresService.referenciaCloudStorage(this.rutaArchivo);
+      let tarea = this.jugadoresService.tareaCloudStorage(this.rutaArchivo, archivo);
+      tarea.percentageChanges().subscribe((data) => {
+        let porcentaje;
+        porcentaje = Math.round(data);
+      });
+      this.fotoSubida = true;
+    }
+
   }
 
 
